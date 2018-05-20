@@ -1,26 +1,49 @@
 <html>
 
-<head>
-    <title>Aliens Abducted Me - Report an Abduction</title>
-</head>
-<body>
-    <h2>Aliens Abducted Me - Report an Abduction</h2>
+    <head>
+        <title>Aliens Abducted Me - Report an Abduction</title>
+    </head>
+    <body>
+        <h2>Aliens Abducted Me - Report an Abduction</h2>
 
-    <?php
+        <?php
 
-        $whenItHappened = $_POST['whenithappened'];
-        $howLong = $_POST['howlong'];
-        $alienDescription = $_POST['aliendescription'];
-        $fangSpotted = $_POST['fangspotted'];
-        $email = $_POST['email'];
+            $name = $_POST['firstname'] . ' ' . $_POST['lastname'];
+            $whenItHappened = $_POST['whenithappened'];
+            $howLong = $_POST['howlong'];
+            $howMany = $_POST['howmany'];
+            $alienDescription = $_POST['aliendescription'];
+            $whatTheyDid = $_POST['whattheydid'];
+            $fangSpotted = $_POST['fangspotted'];
+            $email = $_POST['email'];
+            $other = $_POST['other'];
 
-        echo 'Thanks for submitting the form.<br />';
-        echo 'You were abducted ' . $whenItHappened;
-        echo ' and were gone for ' . $howLong . '<br />';
-        echo 'Describe them: ' . $alienDescription . '<br />';
-        echo 'Was Fang there? ' . $fangSpotted . '<br />';
-        echo 'Your email address is ' . $email;
-    ?>
 
-</body>
+            $to = 'oleksanova@gmail.com';
+            $subject = 'Aliens Abducted Me - Abduction Report';
+            $message = "$name was abducted $whenItHappened and was gone for $howLong. \n"
+                . "Number of aliens: $howMany\n"
+                . "Alien description:  $alienDescription\n"
+                . "What they did: $whatTheyDid\n"
+                . "Fang spotted: $fangSpotted\n"
+                . "Other comments: $other";
+
+
+            $mail = mail($to, $subject, $message, 'From:' . $email);
+
+
+            echo 'Thanks for submitting the form.<br />';
+            echo 'You were abducted ' . $whenItHappened;
+            echo ' and were gone for ' . $howLong . '<br />';
+            echo 'Number of aliens: ' . $howMany . '<br />';
+            echo 'Describe them: ' . $alienDescription . '<br />';
+            echo 'The aliens did this ' . $whatTheyDid . '<br />';
+            echo 'Was Fang there? ' . $fangSpotted . '<br />';
+            echo 'Other comments ' . $other . '<br />';
+            echo 'Your email address is ' . $email;
+
+
+        ?>
+
+    </body>
 </html>
