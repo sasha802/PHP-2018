@@ -28,9 +28,10 @@
                 "VALUES ('$firstName', '$lastName', '$whenItHappened', '$howLong', '$howMany', '$alienDescription', " .
                  "'$whatTheyDid', '$fangSpotted', '$email', '$other')";
 
+
             $result = mysqli_query($dbc, $query)
                 or die('Error querying database.');
-
+            
             mysqli_close($dbc);
 
 
