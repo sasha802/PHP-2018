@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="43458bf1-d75e-4af6-823c-6d982217780c" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/test.php" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/phpByWeek/project/project01/madlibs.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/phpByWeek/project/project01/madlibs.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/phpByWeek/project/project01/stylesheet/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,8 +19,17 @@
       <file leaf-file-name="report.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/phpByWeek/project/labs/week02/ch02/report.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="13" column="17" lean-forward="true" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
+            <state relative-caret-position="154">
+              <caret line="7" column="27" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/phpByWeek/project/project01/stylesheet/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="44">
+              <caret line="2" column="1" lean-forward="true" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -25,8 +37,8 @@
       <file leaf-file-name="report.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/phpByWeek/project/labs/week02/ch02/report.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="506">
-              <caret line="23" column="24" lean-forward="true" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="57" />
+            <state relative-caret-position="568">
+              <caret line="32" column="16" lean-forward="true" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -34,8 +46,8 @@
       <file leaf-file-name="addemail.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/phpByWeek/project/labs/week03/ch03/addemail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="16" column="51" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="51" />
+            <state relative-caret-position="418">
+              <caret line="19" column="56" lean-forward="true" selection-start-line="19" selection-start-column="56" selection-end-line="19" selection-end-column="56" />
               <folding>
                 <element signature="n#style#0;n#img#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -46,8 +58,8 @@
       <file leaf-file-name="addemail.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/phpByWeek/project/labs/week03/ch03/addemail.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+            <state relative-caret-position="308">
+              <caret line="14" column="38" lean-forward="true" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -61,20 +73,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="report.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/phpByWeek/project/labs/week02/ch01/report.php">
+      <file leaf-file-name="madlibs.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/phpByWeek/project/project01/madlibs.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="467">
-              <caret line="26" column="70" lean-forward="true" selection-start-line="26" selection-start-column="70" selection-end-line="26" selection-end-column="70" />
+            <state relative-caret-position="730">
+              <caret line="38" column="50" selection-start-line="38" selection-start-column="50" selection-end-line="38" selection-end-column="50" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/phpByWeek/project/labs/week03/ch03/style.css">
+      <file leaf-file-name="madlibs.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/phpByWeek/project/project01/madlibs.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+            <state relative-caret-position="506">
+              <caret line="23" column="7" lean-forward="true" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -112,8 +124,11 @@
         <option value="$PROJECT_DIR$/phpByWeek/project/demo/nestedFormDemo.html" />
         <option value="$PROJECT_DIR$/phpByWeek/project/demo/nestedFormDemo.php" />
         <option value="$PROJECT_DIR$/phpByWeek/project/labs/week03/ch03/style.css" />
-        <option value="$PROJECT_DIR$/phpByWeek/project/labs/week03/ch03/addemail.html" />
         <option value="$PROJECT_DIR$/phpByWeek/project/labs/week03/ch03/addemail.php" />
+        <option value="$PROJECT_DIR$/phpByWeek/project/project01/stylesheet/style.css" />
+        <option value="$PROJECT_DIR$/phpByWeek/project/labs/week03/ch03/addemail.html" />
+        <option value="$PROJECT_DIR$/phpByWeek/project/project01/madlibs.html" />
+        <option value="$PROJECT_DIR$/phpByWeek/project/project01/madlibs.php" />
       </list>
     </option>
   </component>
@@ -127,9 +142,9 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="228" />
-    <option name="y" value="78" />
-    <option name="width" value="2011" />
+    <option name="x" value="705" />
+    <option name="y" value="151" />
+    <option name="width" value="1821" />
     <option name="height" value="1242" />
   </component>
   <component name="ProjectView">
@@ -160,41 +175,7 @@
               <item name="PHP-2018" type="462c0819:PsiDirectoryNode" />
               <item name="phpByWeek" type="462c0819:PsiDirectoryNode" />
               <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="labs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PHP-2018" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PHP-2018" type="462c0819:PsiDirectoryNode" />
-              <item name="phpByWeek" type="462c0819:PsiDirectoryNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="labs" type="462c0819:PsiDirectoryNode" />
-              <item name="week02" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PHP-2018" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PHP-2018" type="462c0819:PsiDirectoryNode" />
-              <item name="phpByWeek" type="462c0819:PsiDirectoryNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="labs" type="462c0819:PsiDirectoryNode" />
-              <item name="week02" type="462c0819:PsiDirectoryNode" />
-              <item name="ch01" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PHP-2018" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PHP-2018" type="462c0819:PsiDirectoryNode" />
-              <item name="phpByWeek" type="462c0819:PsiDirectoryNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="labs" type="462c0819:PsiDirectoryNode" />
-              <item name="week03" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PHP-2018" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PHP-2018" type="462c0819:PsiDirectoryNode" />
-              <item name="phpByWeek" type="462c0819:PsiDirectoryNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="labs" type="462c0819:PsiDirectoryNode" />
-              <item name="week03" type="462c0819:PsiDirectoryNode" />
-              <item name="ch03" type="462c0819:PsiDirectoryNode" />
+              <item name="project01" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -244,18 +225,19 @@
       <updated>1526838780921</updated>
       <workItem from="1526838782470" duration="13729000" />
       <workItem from="1527041437470" duration="6744000" />
-      <workItem from="1527389633202" duration="3433000" />
+      <workItem from="1527389633202" duration="4171000" />
+      <workItem from="1527454554505" duration="5387000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23906000" />
+    <option name="totallyTimeSpent" value="30031000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="228" y="78" width="2011" height="1242" extended-state="0" />
+    <frame x="705" y="151" width="1821" height="1242" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17404276" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19220209" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -285,6 +267,58 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/phpByWeek/project/labs/week02/ch02/report.html">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="13" column="17" lean-forward="true" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpByWeek/project/labs/week02/ch02/report.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="23" column="24" lean-forward="true" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpByWeek/project/labs/week03/ch03/addemail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="16" column="51" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="51" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpByWeek/project/labs/week03/ch03/addemail.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpByWeek/project/labs/week02/ch01/report.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="16" column="48" lean-forward="true" selection-start-line="16" selection-start-column="48" selection-end-line="16" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpByWeek/project/labs/week03/ch03/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpByWeek/project/labs/week02/ch01/report.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="682">
+          <caret line="31" column="51" lean-forward="true" selection-start-line="31" selection-start-column="51" selection-end-line="31" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpByWeek/project/labs/week02/ch02/report.html">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="704">
           <caret line="32" column="85" selection-start-line="32" selection-start-column="85" selection-end-line="32" selection-end-column="85" />
         </state>
@@ -301,9 +335,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
           <caret line="20" column="32" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
-          <folding>
-            <element signature="n#style#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -355,13 +386,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="23" lean-forward="true" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/test.php" />
     <entry file="jar://$APPLICATION_HOME_DIR$/PlugIns/php/lib/php.jar!/stubs/meta/.phpstorm.meta.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-620" />
@@ -396,9 +421,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
           <caret line="20" column="32" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
-          <folding>
-            <element signature="n#style#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -416,37 +438,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/phpByWeek/project/labs/week02/ch02/report.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="13" column="17" lean-forward="true" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/phpByWeek/project/labs/week03/ch03/images/elvislogo.gif">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/phpByWeek/project/labs/week02/ch02/report.php">
+    <entry file="file://$PROJECT_DIR$/phpByWeek/project/labs/week02/ch01/report.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="23" column="24" lean-forward="true" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="57" />
+        <state relative-caret-position="336">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpByWeek/project/project01/stylesheet/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="1" lean-forward="true" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpByWeek/project/labs/week02/ch02/report.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" column="27" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/phpByWeek/project/labs/week03/ch03/addemail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="16" column="51" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="51" />
+        <state relative-caret-position="418">
+          <caret line="19" column="56" lean-forward="true" selection-start-line="19" selection-start-column="56" selection-end-line="19" selection-end-column="56" />
           <folding>
             <element signature="n#style#0;n#img#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/phpByWeek/project/project01/madlibs.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="23" column="7" lean-forward="true" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/phpByWeek/project/labs/week03/ch03/addemail.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        <state relative-caret-position="308">
+          <caret line="14" column="38" lean-forward="true" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -457,10 +493,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/phpByWeek/project/labs/week02/ch01/report.php">
+    <entry file="file://$PROJECT_DIR$/phpByWeek/project/labs/week02/ch02/report.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
-          <caret line="26" column="70" lean-forward="true" selection-start-line="26" selection-start-column="70" selection-end-line="26" selection-end-column="70" />
+        <state relative-caret-position="568">
+          <caret line="32" column="16" lean-forward="true" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpByWeek/project/project01/madlibs.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="730">
+          <caret line="38" column="50" selection-start-line="38" selection-start-column="50" selection-end-line="38" selection-end-column="50" />
         </state>
       </provider>
     </entry>
