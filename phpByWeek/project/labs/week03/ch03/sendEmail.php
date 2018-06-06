@@ -13,8 +13,8 @@
         /*or die('Error running query.');*/
 
    while ( $row = mysqli_fetch_array($queryResult) ) {
-       echo $row['first_name'] . ' '  . $row['last_name'] . ': ' . $row['email'] . '<br />';
-       break;
+       echo $row['first_name'] . ' '  . $row['last_name'] . ' :' . $row['email'] . '<br />';
+
 
    }
 
