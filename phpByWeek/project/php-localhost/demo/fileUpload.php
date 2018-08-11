@@ -11,7 +11,7 @@
 
 <?php
 
-define('GW_UPLOADPATH', 'images/');
+//define('GW_UPLOADPATH', 'images/');
 
 if ( isset($_POST['submit']) ) {
 
@@ -24,7 +24,7 @@ if ( isset($_POST['submit']) ) {
 
     if ( !empty($name) && !empty($score) && !empty($screenshot)) {
 
-        $target = GW_UPLOADPATH . $screenshot;
+       // $target = GW_UPLOADPATH . $screenshot;
 
         if ( move_uploaded_file($_FILES['screenshot']['tmp_name'], $target) ) {
 
