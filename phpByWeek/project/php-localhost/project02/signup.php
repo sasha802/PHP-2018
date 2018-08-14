@@ -25,11 +25,14 @@
 
                 if ( !empty($userName) && !empty($password1) && !empty($password2) && $password1 == $password2) {
 
+
                     $query = "SELECT * 
                               FROM exercise_user 
-                              WHERE user_name = $userName";
+                              WHERE user_name = '$userName'";
 
-                    $data = mysqli_query($dbs, $query);
+                    $data = mysqli_query($dbs, $query)
+                        or die('Error selection username');
+
 
                     if ( mysqli_num_rows($data) == 0 ) {
 
