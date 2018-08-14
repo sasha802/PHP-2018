@@ -77,6 +77,6 @@
         <input type="submit" name="submit" value="Log My Exercise" />
 
     </form>
-    <a href="index.html">Home</a>
+    <a href="index.php">Home</a>
 </body>
 </html>

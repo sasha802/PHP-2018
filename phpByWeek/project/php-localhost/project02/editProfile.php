@@ -147,7 +147,7 @@
 
         </form>
     </div>
-    <a href="index.html">Home</a>
+    <a href="index.php">Home</a>
 
 </body>
 </html>
