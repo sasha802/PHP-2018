@@ -85,13 +85,9 @@
 
                 <label>Select Yor Gender</label>
                 <select name="gender">
-                    <option value="">-- Select --</option>
-                    <option value="F">F</option>
-                    <option value="M">M</option>
-
-                    <!--<option value="" <?php /*if( $userGender ==='' ) echo 'selected' */?>>-- Select --</option>
-                    <option value="F" <?php /*if( $userGender === 'F' ) echo 'selected' */?>>F</option>
-                    <option value="M" <?php /*if( $userGender === 'M' ) echo 'selected'*/?>>M</option>-->
+                    <option value="" <?php if( isset($_POST['submit']) && $userGender ==='' ) echo 'selected' ?>>-- Select --</option>
+                    <option value="F" <?php if( isset($_POST['submit']) && $userGender === 'F' ) echo 'selected' ?>>F</option>
+                    <option value="M" <?php if( isset($_POST['submit']) && $userGender === 'M' ) echo 'selected'?>>M</option>
                 </select><br />
 
                 <label>Birthdate</label>

@@ -7,20 +7,19 @@
 <body>
 
     <?php
-
+        require_once('headerTemplate.html');
         require_once('appVariables.php');
         require_once('dbsConnectionVariables.php');
+        require_once('login.php');
 
         $dbs = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME)
-        or die('Error connecting to MySQL Server.');
+            or die('Error connecting to MySQL Server.');
 
         $sqlImage = "SELECT image_name 
                      FROM exercise_user
-                     WHERE user_name = 'test_user_name'";
+                     WHERE ID = '$userId'";
 
         $sqlResults = mysqli_query($dbs, $sqlImage);
-
-        mysqli_close($dbs);
 
 
         echo '<div>';
@@ -32,11 +31,11 @@
 
         if ( isset($_POST['submit']) ) {
 
-            $userFirstName = $_POST['firstName'];
-            $userLastName = $_POST['lastName'];
-            $userGender = $_POST['gender'];
-            $userBirthdate = $_POST['birthdate'];
-            $userWeight = $_POST['weight'];
+            $userFirstName = mysqli_real_escape_string($dbs, trim($_POST['firstName']));
+            $userLastName = mysqli_real_escape_string($dbs, trim($_POST['lastName']));
+            $userGender = mysqli_real_escape_string($dbs, $_POST['gender']);
+            $userBirthdate = mysqli_real_escape_string($dbs, $_POST['birthdate']);
+            $userWeight = mysqli_real_escape_string($dbs, $_POST['weight']);
 
             $imageName = $_FILES['image']['name'];
             $imageType = $_FILES['image']['type'];
@@ -45,51 +44,44 @@
             $imageTmpLocation = $_FILES['image']['tmp_name'];
 
 
-            if ( !empty($userFirstName) && !empty($userLastName) && !empty($userGender) && !empty($userBirthdate)
-                && !empty($userWeight) ) {
+            if ( (($imageType == 'image/gif') || ($imageType == 'image/jpeg') || ($imageType == 'image/pjpeg')
+                || ($imageType == 'image/png') && ($imageSize > 0) && ($imageSize <= SC_MAXFILESIZE)) ) {
 
-                if ( (($imageType == 'image/gif') || ($imageType == 'image/jpeg') || ($imageType == 'image/pjpeg')
-                    || ($imageType == 'image/png') && ($imageSize > 0) && ($imageSize <= SC_MAXFILESIZE)) ) {
+                if ( $imageError == 0 ) {
 
-                    if ( $imageError == 0 ) {
+                    $targetImgLocation = SC_UPLOADPATH . $imageName;
 
-                        $targetImgLocation = SC_UPLOADPATH . $imageName;
-
-                        if ( move_uploaded_file($imageTmpLocation, $targetImgLocation) ) {
-
-                            $dbs = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME)
-                            or die('Error connecting to MySQL Server.');
+                    if ( move_uploaded_file($imageTmpLocation, $targetImgLocation) ) {
 
 
-                            $sql = "INSERT INTO exercise_user (first_name, last_name, gender, birthdate, weight, image_name) 
-                                    VALUES ('$userFirstName', '$userLastName', '$userGender', '$userBirthdate', '$userWeight', '$imageName')";
+                        $sql = "UPDATE exercise_user 
+                                SET first_name = '$userFirstName', last_name = '$userLastName', gender = '$userGender',
+                                    birthdate = '$userBirthdate', weight = '$userWeight', image_name = '$imageName'
+                                WHERE ID = '$userId'";
 
-                            mysqli_query($dbs, $sql)
-                                or die('Error inserting into ' . DB_NAME . 'database');
+                        mysqli_query($dbs, $sql)
+                            or die('Error inserting into ' . DB_NAME . ' database');
 
-                            $userFirstName = '';
-                            $userLastName = '';
-                            $userGender = '';
-                            $userBirthdate = '';
-                            $userWeight = '';
+                        $userFirstName = '';
+                        $userLastName = '';
+                        $userGender = '';
+                        $userBirthdate = '';
+                        $userWeight = '';
 
-                            mysqli_close($dbs);
-
-                        } else {
-                            echo '<p>Error moving image file</p>';
-                        }
+                        mysqli_close($dbs);
 
                     } else {
-                        echo '<p>Error uploading an image.</p>';
+                        echo '<p>Error moving image file</p>';
                     }
 
                 } else {
-                    echo '<p>Your image has to have one of the extensions (.gif, .jpeg, .pjpeg, .png)</p>';
+                    echo '<p>Error uploading an image.</p>';
                 }
 
             } else {
-                echo '<p>Please enter all the form information.</p>';
+                echo '<p>Your image has to have one of the extensions (.gif, .jpeg, .pjpeg, .png)</p>';
             }
+
         }
 
     ?>
@@ -115,9 +107,9 @@
 
             <label>Select Yor Gender</label>
             <select name="gender">
-                <option value="" <?php if( $userGender ==='' ) echo 'selected' ?>>-- Select --</option>
-                <option value="F" <?php if( $userGender === 'F' ) echo 'selected' ?>>F</option>
-                <option value="M" <?php if( $userGender === 'M' ) echo 'selected'?>>M</option>
+                <option value="" <?php if( isset($_POST['submit']) && $userGender === '' ) echo 'selected' ?>>-- Select --</option>
+                <option value="F" <?php if( isset($_POST['submit']) && $userGender === 'F' ) echo 'selected' ?>>F</option>
+                <option value="M" <?php if( isset($_POST['submit']) && $userGender === 'M' ) echo 'selected'?>>M</option>
             </select><br />
 
             <label>Birthdate</label>
@@ -147,7 +139,6 @@
 
         </form>
     </div>
-    <a href="index.php">Home</a>
 
 </body>
 </html>

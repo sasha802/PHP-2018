@@ -1,13 +1,15 @@
 <?php
+    require_once('headerTemplate.html');
     require_once('dbsConnectionVariables.php');
 
     if ( !isset($_SERVER['PHP_AUTH_USER']) || !isset($_SERVER['PHP_AUTH_PW']) ) {
 
         header('HTTP/1.1 401 Unauthorized');
-        header('WWW-Authenticate: Basic realm="Mismatch"');
-        exit('<h3>Mismatch</h3>Sorry, you must enter your username and password to log ' .
+        header('WWW-Authenticate: Basic realm="ExerciseLogger"');
+        exit('<h3>Exercise Logger</h3>Sorry, you must enter your username and password to log ' .
             'in and access this page. If you aren\'t a registered member, please ' .
-            '<a href="signup.php">sign up</a>.');
+            '<a href="signup.php">sign up</a>.
+             <a href="index.php">Home</a>');
 
     }
 
@@ -32,8 +34,9 @@
     } else {
 
         header('HTTP/1.1 401 Unauthorized');
-        header('WWW-Authenticate: Basic realm="Mismatch"');
-        exit('<h2>Mismatch</h2>Sorry, you must enter a valid username and password to log ' .
+        header('WWW-Authenticate: Basic realm="ExerciseLogger"');
+
+        exit('<h2>Exercise Logger</h2>Sorry, you must enter a valid username and password to log ' .
             'in and access this page. If you aren\'t a registered member, please ' .
             '<a href="signup.php">sign up</a>.');
     }
