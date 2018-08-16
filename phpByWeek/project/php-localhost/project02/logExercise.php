@@ -9,7 +9,10 @@
         require_once('headerTemplate.html');
         require_once('appVariables.php');
         require_once('dbsConnectionVariables.php');
-        require_once('login.php');
+        require_once('sessionStarter.php');
+        //require_once('login.php');
+
+        $userId = $_SESSION['userId'];
 
         $gender = '';
         $weight = '';
@@ -84,12 +87,6 @@
         mysqli_close($dbs);
 
     ?>
-
-
-
-
-
-
 
     <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
 

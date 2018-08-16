@@ -1,5 +1,5 @@
 <?php
-    require_once('headerTemplate.html');
+/*    require_once('headerTemplate.html');
     require_once('dbsConnectionVariables.php');
 
     if ( !isset($_SERVER['PHP_AUTH_USER']) || !isset($_SERVER['PHP_AUTH_PW']) ) {
@@ -41,4 +41,4 @@
             '<a href="signup.php">sign up</a>.');
     }
 
-    echo '<p>You are logged in as ' . $userName . '</p>';
+    echo '<p>You are logged in as ' . $userName . '</p>';*/

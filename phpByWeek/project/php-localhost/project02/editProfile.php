@@ -10,10 +10,12 @@
         require_once('headerTemplate.html');
         require_once('appVariables.php');
         require_once('dbsConnectionVariables.php');
-        require_once('login.php');
+        require_once('sessionStarter.php');
 
         $dbs = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME)
             or die('Error connecting to MySQL Server.');
+
+        $userId  = $_SESSION['userId'];
 
         $sqlImage = "SELECT image_name 
                      FROM exercise_user
