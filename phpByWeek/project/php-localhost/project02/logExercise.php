@@ -74,7 +74,7 @@
                 mysqli_query($dbs, $query)
                     or die('Error running query');
 
-                echo '<div>';
+                echo '<div class="container">';
                 echo '<h3>You burned ' . $caloriesBurned . ' calories</h3>';
                 echo '</div>';
 
@@ -87,49 +87,59 @@
         mysqli_close($dbs);
 
     ?>
+    <div class="mainContainer">
+    <div class="container">
+        <form class="form-horizontal" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
 
-    <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
+            <div class="form-group">
+                <label class="ontrol-label">Type of exercise</label>
+                <select class="form-control" name="exerciseType">
+                    <option value=""<?php if( isset($_POST['submit']) && $exerciseType === '' ) echo 'selected' ?>>-- Select --</option>
+                    <option value="Ballroom Dance" <?php if( isset($_POST['submit']) && $exerciseType === 'Ballroom Dance' ) echo 'selected' ?>>Ballroom Dance</option>
+                    <option value="Run" <?php if( isset($_POST['submit']) && $exerciseType === 'Run' ) echo 'selected'?>>Run</option>
+                    <option value="Yoga" <?php if( isset($_POST['submit']) && $exerciseType === 'Yoga' ) echo 'selected' ?>>Yoga</option>
+                    <option value="Walk" <?php if( isset($_POST['submit']) && $exerciseType === 'Walk' ) echo 'selected' ?>>Walk</option>
+                </select>
+            </div>
 
-        <label>Type of exercise</label>
+            <div class="form-group">
+                <label class="ontrol-label">Date of exercise</label>
+                <input class="form-control" type="text" name="exerciseDate" value="
+                    <?php
+                        if ( !empty($exerciseDate) ) {
+                            echo $exerciseDate;
+                        }
+                    ?>
+                "/>
+            </div>
 
-        <select name="exerciseType">
-            <option value=""<?php if( isset($_POST['submit']) && $exerciseType === '' ) echo 'selected' ?>>-- Select --</option>
-            <option value="Ballroom Dance" <?php if( isset($_POST['submit']) && $exerciseType === 'Ballroom Dance' ) echo 'selected' ?>>Ballroom Dance</option>
-            <option value="Run" <?php if( isset($_POST['submit']) && $exerciseType === 'Run' ) echo 'selected'?>>Run</option>
-            <option value="Yoga" <?php if( isset($_POST['submit']) && $exerciseType === 'Yoga' ) echo 'selected' ?>>Yoga</option>
-            <option value="Walk" <?php if( isset($_POST['submit']) && $exerciseType === 'Walk' ) echo 'selected' ?>>Walk</option>
-        </select><br />
+            <div class="form-group">
+                <label class="ontrol-label">Time (in minutes)</label>
+                <input class="form-control" type="text" name="exerciseTime" value="
+                    <?php
+                        if ( !empty($exerciseTime) ) {
+                            echo $exerciseTime;
+                        }
+                    ?>
+                "/>
+            </div>
 
-        <label>Date of exercise</label>
-        <input type="text" name="exerciseDate" value="
-            <?php
-                if ( !empty($exerciseDate) ) {
-                    echo $exerciseDate;
-                }
-            ?>
-        "/><br />
+            <div class="form-group">
+                <label class="ontrol-label">Average heart rate</label>
+                <input class="form-control" type="text" name="heartRate" value="
+                    <?php
+                        if ( !empty($heartRate) ) {
+                            echo $heartRate;
+                        }
+                    ?>
+                "/>
+            </div>
 
-        <label>Time (in minutes)</label>
-        <input type="text" name="exerciseTime" value="
-            <?php
-                if ( !empty($exerciseTime) ) {
-                    echo $exerciseTime;
-                }
-            ?>
-        "/><br />
+            <button class="btn btn-success" type="submit" name="submit">Log My Exercise</button>
 
-        <label>Average heart rate</label>
-        <input type="text" name="heartRate" value="
-            <?php
-                if ( !empty($heartRate) ) {
-                    echo $heartRate;
-                }
-            ?>
-        "/><br /><br />
-
-        <input type="submit" name="submit" value="Log My Exercise" />
-
-    </form>
+        </form>
+    </div>
+    </div>
 
 </body>
 </html>

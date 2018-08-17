@@ -17,6 +17,20 @@
             $dbs = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME)
             or die('Error connecting to the database');
 
+            $sqlImage = "SELECT image_name 
+                         FROM exercise_user
+                         WHERE ID = '$userId'";
+
+            $sqlResults = mysqli_query($dbs, $sqlImage);
+
+            echo '<div class="mainContainer">';
+            echo '<div class="container">';
+            foreach ( $sqlResults as $row ) {
+                echo '<p><img src="' . SC_UPLOADPATH . $row['image_name'] . '" alt="User Profile Image"></p>';
+            }
+            echo '</div>';
+            echo '</div>';
+
             $queryUserInfo = "SELECT * 
                               FROM exercise_user
                               WHERE ID = '$userId'";
@@ -40,7 +54,8 @@
 
                 $row = mysqli_fetch_array($userInfoResults);
 
-                echo '<table>';
+                echo '<div class="container">';
+                echo '<table class="table">';
                     echo '<tbody>';
                         echo '<tr><th>First Name</th><td>' . $row['first_name'] . '</td></tr>';
                         echo '<tr><th>Last Name</th><td>' . $row['last_name'] . '</td></tr>';
@@ -52,7 +67,8 @@
             }
 
             echo '<div>';
-                echo '<table>';
+                echo '<h4>Latest Exercise Information</h4>';
+                echo '<table class="table table-striped">';
                     echo '<tr>';
                         echo '<th>Date of exercise</th>';
                         echo '<th>Type of exercise</th>';
@@ -71,12 +87,15 @@
                             echo '<td>' . $exerciseInfoRow['heartrate'] . '</td>';
                             echo '<td>' . $exerciseInfoRow['calories'] . '</td>';
 
-                        echo '<td><a href="removeExercise.php?id=' . $exerciseInfoRow['ID'] . '">Remove</a></td>';
+                        echo '<td><a href="removeExercise.php?id=' . $exerciseInfoRow['ID'] . '">';
+                        echo ' <span class="glyphicon glyphicon-trash"></span>';
+                        echo '</a></td>';
                         echo '</tr>';
 
                     }
                 echo '</table>';
             echo '</div>';
+            echo'</div>';
 
 
 

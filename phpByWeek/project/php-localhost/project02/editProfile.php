@@ -17,18 +17,21 @@
 
         $userId  = $_SESSION['userId'];
 
-        $sqlImage = "SELECT image_name 
+        $sqlImage = "SELECT *
                      FROM exercise_user
                      WHERE ID = '$userId'";
 
         $sqlResults = mysqli_query($dbs, $sqlImage);
 
 
-        echo '<div>';
-            foreach ( $sqlResults as $row ) {
-                echo '<p><img src="' . SC_UPLOADPATH . $row['image_name'] . '" alt="User Profile Image"></p>';
-            }
+        echo '<div class="mainContainer">';
+            echo '<div class="container">';
+                foreach ( $sqlResults as $row ) {
+                    echo '<p><img src="' . SC_UPLOADPATH . $row['image_name'] . '" alt="User Profile Image"></p>';
+                }
+            echo '</div>';
         echo '</div>';
+
 
 
         if ( isset($_POST['submit']) ) {
@@ -45,99 +48,118 @@
             $imageError = $_FILES['image']['error'];
             $imageTmpLocation = $_FILES['image']['tmp_name'];
 
+            if ( !empty($userFirstName) && !empty($userLastName) && !empty($userGender) && !empty($userBirthdate) && !empty($userWeight) ) {
 
-            if ( (($imageType == 'image/gif') || ($imageType == 'image/jpeg') || ($imageType == 'image/pjpeg')
-                || ($imageType == 'image/png') && ($imageSize > 0) && ($imageSize <= SC_MAXFILESIZE)) ) {
+                if ( (($imageType == 'image/gif') || ($imageType == 'image/jpeg') || ($imageType == 'image/pjpeg')
+                    || ($imageType == 'image/png') && ($imageSize > 0) && ($imageSize <= SC_MAXFILESIZE)) ) {
 
-                if ( $imageError == 0 ) {
+                    if ( $imageError == 0 ) {
 
-                    $targetImgLocation = SC_UPLOADPATH . $imageName;
+                        $targetImgLocation = SC_UPLOADPATH . $imageName;
 
-                    if ( move_uploaded_file($imageTmpLocation, $targetImgLocation) ) {
+                        if ( move_uploaded_file($imageTmpLocation, $targetImgLocation) ) {
 
 
-                        $sql = "UPDATE exercise_user 
+                            $sql = "UPDATE exercise_user 
                                 SET first_name = '$userFirstName', last_name = '$userLastName', gender = '$userGender',
                                     birthdate = '$userBirthdate', weight = '$userWeight', image_name = '$imageName'
                                 WHERE ID = '$userId'";
 
-                        mysqli_query($dbs, $sql)
+                            mysqli_query($dbs, $sql)
                             or die('Error inserting into ' . DB_NAME . ' database');
 
-                        $userFirstName = '';
-                        $userLastName = '';
-                        $userGender = '';
-                        $userBirthdate = '';
-                        $userWeight = '';
+                            $userFirstName = '';
+                            $userLastName = '';
+                            $userGender = '';
+                            $userBirthdate = '';
+                            $userWeight = '';
 
-                        mysqli_close($dbs);
+                            mysqli_close($dbs);
+
+                        } else {
+                            echo '<p class="container">Error moving image file</p>';
+                        }
 
                     } else {
-                        echo '<p>Error moving image file</p>';
+                        echo '<p class="container">Error uploading an image.</p>';
                     }
 
                 } else {
-                    echo '<p>Error uploading an image.</p>';
+                    echo '<p class="container">Your image has to have one of the extensions (.gif, .jpeg, .pjpeg, .png)</p>';
                 }
 
             } else {
-                echo '<p>Your image has to have one of the extensions (.gif, .jpeg, .pjpeg, .png)</p>';
+                echo '<p>Fill in the form</p>';
             }
+
 
         }
 
     ?>
-    <div>
-        <form enctype="multipart/form-data" method="POST" action="<?php echo $_SERVER['PHP_SELF']?>" >
 
-            <label>First Name</label>
-            <input type="text" name="firstName" value="
-                <?php
-                    if ( !empty($userFirstName) ) {
-                        echo $userFirstName;
-                    }
-                ?>" /><br />
+    <div class="container">
+        <form class="form-horizontal" enctype="multipart/form-data" method="POST" action="<?php echo $_SERVER['PHP_SELF']?>" >
 
-            <label>Last Name</label>
-            <input type="text" name="lastName" value="
-                <?php
-                    if ( !empty($userLastName) ) {
-                        echo $userLastName;
-                    }
-                ?>
-            "/><br />
+            <div class="form-group">
+                <label class="ontrol-label">First Name</label>
+                <input class="form-control" type="text" name="firstName" value="
+                    <?php
 
-            <label>Select Yor Gender</label>
-            <select name="gender">
-                <option value="" <?php if( isset($_POST['submit']) && $userGender === '' ) echo 'selected' ?>>-- Select --</option>
-                <option value="F" <?php if( isset($_POST['submit']) && $userGender === 'F' ) echo 'selected' ?>>F</option>
-                <option value="M" <?php if( isset($_POST['submit']) && $userGender === 'M' ) echo 'selected'?>>M</option>
-            </select><br />
+                        foreach ( $sqlResults as $row ) {
+                            echo $row['first_name'];
+                        }
 
-            <label>Birthdate</label>
-            <input type="text" name="birthdate" value="
-                <?php
-                    if ( !empty($userBirthdate) ) {
-                        echo $userBirthdate;
-                    }
-                ?>
-            "/><br />
+                    ?>" />
+            </div>
 
-            <label>Weight</label>
-            <input type="text" name="weight" value="
-                <?php
-                    if ( !empty($userWeight) ) {
-                        echo $userWeight;
-                    }
-                ?>
-            "/><br />
+            <div class="form-group">
+                <label class="ontrol-label">Last Name</label>
+                <input class="form-control" type="text" name="lastName" value="
+                    <?php
+                        foreach ( $sqlResults as $row ) {
+                            echo $row['last_name'];
+                        }
+                    ?>
+                "/>
+            </div>
+
+            <div class="form-group">
+                <label class="ontrol-label">Select Yor Gender</label>
+                <select class="form-control" name="gender">
+                    <option value="" <?php if( isset($_POST['submit']) && $userGender === '' ) echo 'selected' ?>>-- Select --</option>
+                    <option value="F" <?php if( isset($_POST['submit']) && $userGender === 'F' ) echo 'selected' ?>>F</option>
+                    <option value="M" <?php if( isset($_POST['submit']) && $userGender === 'M' ) echo 'selected'?>>M</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="ontrol-label">Birthdate</label>
+                <input class="form-control" type="text" name="birthdate" value="
+                    <?php
+                        foreach ( $sqlResults as $row ) {
+                            echo $row['birthdate'];
+                        }
+                    ?>
+                "/>
+            </div>
+
+            <div class="form-group">
+                <label class="ontrol-label">Weight</label>
+                <input class="form-control" type="text" name="weight" value="
+                    <?php
+                        foreach ( $sqlResults as $row ) {
+                            echo $row['weight'];
+                        }
+                    ?>
+                "/>
+            </div>
 
             <input type="hidden" name="MAX_FILE_SIZE" /><br />
             <label for="image">Profile Image:</label>
             <input type="file" id="image" name="image" />
             <hr />
 
-            <input type="submit" name="submit" value="Save Profile"/>
+            <button class="btn btn-success" type="submit" name="submit">Edit Profile</button>
 
         </form>
     </div>
