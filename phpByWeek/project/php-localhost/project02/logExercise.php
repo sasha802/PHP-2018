@@ -26,10 +26,13 @@
 
         if ( isset($_POST['submit']) ) {
 
-            $exerciseType = $_POST['exerciseType'];
-            $exerciseDate = trim($_POST['exerciseDate']);
-            $exerciseTime = trim($_POST['exerciseTime']);
-            $heartRate = trim($_POST['heartRate']);
+            $exerciseType = mysqli_real_escape_string($dbs, $_POST['exerciseType']);
+            $exerciseDateInput = $_POST['exerciseDate'];
+            $exerciseTime = mysqli_real_escape_string($dbs, trim($_POST['exerciseTime']));
+            $heartRate = mysqli_real_escape_string($dbs, trim($_POST['heartRate']));
+
+            $exerciseDateFormat = DateTime::createFromFormat('m/d/Y', $exerciseDateInput);
+            $exerciseDate = $exerciseDateFormat->format('Y/m/d');
 
 
            if ( !empty($exerciseType) && !empty($exerciseDate) && !empty($exerciseTime) && !empty($heartRate) ) {
@@ -74,14 +77,14 @@
                 mysqli_query($dbs, $query)
                     or die('Error running query');
 
-                echo '<div class="container">';
+                echo '<div class="container mainContainer">';
                 echo '<h3>You burned ' . $caloriesBurned . ' calories</h3>';
                 echo '</div>';
 
-            }
+            } else {
 
-
-
+               echo '<p class="mainContainer">Please enter all the values.</p>';
+           }
         }
 
         mysqli_close($dbs);
@@ -104,7 +107,7 @@
 
             <div class="form-group">
                 <label class="ontrol-label">Date of exercise</label>
-                <input class="form-control" type="text" name="exerciseDate" value="
+                <input class="form-control datePicker" type="text" name="exerciseDate" value="
                     <?php
                         if ( !empty($exerciseDate) ) {
                             echo $exerciseDate;

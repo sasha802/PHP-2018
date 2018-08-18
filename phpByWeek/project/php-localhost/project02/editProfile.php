@@ -17,11 +17,26 @@
 
         $userId  = $_SESSION['userId'];
 
+        $sqlFirstName = '';
+        $sqlLastName = '';
+        $sqlGender = '';
+        $sqlBirthdate = '';
+        $sqlWeight = '';
+
         $sqlImage = "SELECT *
                      FROM exercise_user
                      WHERE ID = '$userId'";
 
         $sqlResults = mysqli_query($dbs, $sqlImage);
+
+        foreach ( $sqlResults as $row ) {
+
+            $sqlFirstName = $row['first_name'];
+            $sqlLastName = $row['last_name'];
+            $sqlGender = $row['gender'];
+            $sqlBirthdate = $row['birthdate'];
+            $sqlWeight = $row['weight'];
+        }
 
 
         echo '<div class="mainContainer">';
@@ -36,11 +51,15 @@
 
         if ( isset($_POST['submit']) ) {
 
+
             $userFirstName = mysqli_real_escape_string($dbs, trim($_POST['firstName']));
             $userLastName = mysqli_real_escape_string($dbs, trim($_POST['lastName']));
             $userGender = mysqli_real_escape_string($dbs, $_POST['gender']);
-            $userBirthdate = mysqli_real_escape_string($dbs, $_POST['birthdate']);
+            $userBirthdate = $_POST['birthdate'];
             $userWeight = mysqli_real_escape_string($dbs, $_POST['weight']);
+
+            $userBirthdateFormat = DateTime::createFromFormat('m/d/Y', $userBirthdate);
+            $birthdate = $userBirthdateFormat->format('Y/m/d');
 
             $imageName = $_FILES['image']['name'];
             $imageType = $_FILES['image']['type'];
@@ -49,6 +68,16 @@
             $imageTmpLocation = $_FILES['image']['tmp_name'];
 
             if ( !empty($userFirstName) && !empty($userLastName) && !empty($userGender) && !empty($userBirthdate) && !empty($userWeight) ) {
+
+
+                $sql = "UPDATE exercise_user 
+                        SET first_name = '$userFirstName', last_name = '$userLastName', gender = '$userGender',
+                                    birthdate = '$birthdate', weight = '$userWeight'
+                        WHERE ID = '$userId'";
+
+                mysqli_query($dbs, $sql)
+                or die('Error inserting into ' . DB_NAME . ' database');
+
 
                 if ( (($imageType == 'image/gif') || ($imageType == 'image/jpeg') || ($imageType == 'image/pjpeg')
                     || ($imageType == 'image/png') && ($imageSize > 0) && ($imageSize <= SC_MAXFILESIZE)) ) {
@@ -59,22 +88,12 @@
 
                         if ( move_uploaded_file($imageTmpLocation, $targetImgLocation) ) {
 
-
                             $sql = "UPDATE exercise_user 
-                                SET first_name = '$userFirstName', last_name = '$userLastName', gender = '$userGender',
-                                    birthdate = '$userBirthdate', weight = '$userWeight', image_name = '$imageName'
+                                SET image_name = '$imageName'
                                 WHERE ID = '$userId'";
 
                             mysqli_query($dbs, $sql)
                             or die('Error inserting into ' . DB_NAME . ' database');
-
-                            $userFirstName = '';
-                            $userLastName = '';
-                            $userGender = '';
-                            $userBirthdate = '';
-                            $userWeight = '';
-
-                            mysqli_close($dbs);
 
                         } else {
                             echo '<p class="container">Error moving image file</p>';
@@ -83,18 +102,15 @@
                     } else {
                         echo '<p class="container">Error uploading an image.</p>';
                     }
-
-                } else {
-                    echo '<p class="container">Your image has to have one of the extensions (.gif, .jpeg, .pjpeg, .png)</p>';
                 }
 
             } else {
                 echo '<p>Fill in the form</p>';
             }
 
-
         }
 
+    mysqli_close($dbs);
     ?>
 
     <div class="container">
@@ -105,19 +121,23 @@
                 <input class="form-control" type="text" name="firstName" value="
                     <?php
 
-                        foreach ( $sqlResults as $row ) {
-                            echo $row['first_name'];
-                        }
+                        if ( isset($_POST['submit']) ) {
+                            echo $userFirstName;
 
-                    ?>" />
+                        } else {
+                            echo $sqlFirstName;
+                        }
+                ?>" />
             </div>
 
             <div class="form-group">
                 <label class="ontrol-label">Last Name</label>
                 <input class="form-control" type="text" name="lastName" value="
                     <?php
-                        foreach ( $sqlResults as $row ) {
-                            echo $row['last_name'];
+                        if ( isset($_POST['submit']) ) {
+                            echo $userLastName;
+                        } else {
+                            echo $sqlLastName;
                         }
                     ?>
                 "/>
@@ -127,35 +147,37 @@
                 <label class="ontrol-label">Select Yor Gender</label>
                 <select class="form-control" name="gender">
                     <option value="" <?php if( isset($_POST['submit']) && $userGender === '' ) echo 'selected' ?>>-- Select --</option>
-                    <option value="F" <?php if( isset($_POST['submit']) && $userGender === 'F' ) echo 'selected' ?>>F</option>
-                    <option value="M" <?php if( isset($_POST['submit']) && $userGender === 'M' ) echo 'selected'?>>M</option>
+                    <option value="F" <?php if( $sqlGender === 'F' ) echo 'selected' ?>>F</option>
+                    <option value="M" <?php if( $sqlGender === 'M' ) echo 'selected'?>>M</option>
                 </select>
             </div>
 
             <div class="form-group">
                 <label class="ontrol-label">Birthdate</label>
-                <input class="form-control" type="text" name="birthdate" value="
+                <input class="form-control datePicker" type="text" name="birthdate" value="
                     <?php
-                        foreach ( $sqlResults as $row ) {
-                            echo $row['birthdate'];
+                        if ( isset($_POST['submit']) ) {
+                            echo $userBirthdate;
+                        } else {
+                            echo $sqlBirthdate;
                         }
-                    ?>
-                "/>
+                ?>"/>
             </div>
 
             <div class="form-group">
                 <label class="ontrol-label">Weight</label>
                 <input class="form-control" type="text" name="weight" value="
                     <?php
-                        foreach ( $sqlResults as $row ) {
-                            echo $row['weight'];
+                        if ( isset($_POST['submit']) ) {
+                            echo $userWeight;
+                        } else {
+                            echo $sqlWeight;
                         }
-                    ?>
-                "/>
+                ?>"/>
             </div>
 
             <input type="hidden" name="MAX_FILE_SIZE" /><br />
-            <label for="image">Profile Image:</label>
+            <label for="image">Profile Image (allowed extensions .gif, .jpeg, .pjpeg, .png):</label>
             <input type="file" id="image" name="image" />
             <hr />
 

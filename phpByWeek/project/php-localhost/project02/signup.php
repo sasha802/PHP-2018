@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Sign Up</title>
+    <?php require_once('bootstrapLinks.html');?>
 </head>
     <body>
         <?php
@@ -37,11 +38,11 @@
                     if ( mysqli_num_rows($data) == 0 ) {
 
                         $query = "INSERT INTO exercise_user (first_name, last_name, gender, birthdate, weight, user_name, password)
-                                  VALUES ('$userFirstName', '$userLastName', '$userGender', '$userBirthdate', $userWeight, '$userName', SHA1($password2))";
+                                  VALUES ('$userFirstName', '$userLastName', '$userGender', '$userBirthdate', $userWeight, '$userName', $password2)";
                         mysqli_query($dbs, $query);
 
-                        echo '<p>Your new account has been successfully created. ' .
-                            'You\'re now ready to log in and <a href="editProfile.php">' .
+                        echo '<p class="mainContainer">Your new account has been successfully created. ' .
+                            'You\'re now ready to log in and<br /> <a href="editProfile.php">' .
                             'edit your profile</a>.</p>';
 
                         mysqli_close($dbs);
@@ -49,80 +50,108 @@
 
                     } else {
 
-                        echo '<p class="error">An account already exists for this username. ' .
-                            'Please use a different address.</p>';
+                        echo '<p class="mainContainer">An account already exists for this username.</p>';
                         $userName = '';
                     }
                 } else {
 
-                    echo '<p class="error">You must enter all of the sign-up data, ' .
+                    echo '<p class="mainContainer">You must enter all of the sign-up data, ' .
                         'including the desired password twice.</p>';
                 }
             }
             mysqli_close($dbs);
         ?>
 
-        <p>Please feel in the form to sung up for Exercise Logger</p>
-        <form method="POST" action="<?php echo $_SERVER['PHP_SELF']?>" >
-            <fieldset>
-                <legend>Exercise Logger Registration Information</legend>
-                <label>First Name</label>
-                <input type="text" name="firstName" value="
-                    <?php
-                if ( !empty($userFirstName) ) {
-                    echo $userFirstName;
-                }
-                ?>" /><br />
+        <div class="mainContainer">
+            <form class="form-horizontal" method="POST" action="<?php echo $_SERVER['PHP_SELF']?>" >
+                <h3>Exercise Logger Registration Information</h3>
 
-                <label>Last Name</label>
-                <input type="text" name="lastName" value="
-                    <?php
-                if ( !empty($userLastName) ) {
-                    echo $userLastName;
-                }
-                ?>
-                "/><br />
+                <div class="form-group">
+                    <label class="control-label col-sm-4">First Name</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" type="text" name="firstName" value="
+                        <?php
+                            if ( !empty($userFirstName) ) {
+                                echo $userFirstName;
+                            }
+                        ?>" />
+                    </div>
+                </div>
 
-                <label>Select Yor Gender</label>
-                <select name="gender">
-                    <option value="" <?php if( isset($_POST['submit']) && $userGender ==='' ) echo 'selected' ?>>-- Select --</option>
-                    <option value="F" <?php if( isset($_POST['submit']) && $userGender === 'F' ) echo 'selected' ?>>F</option>
-                    <option value="M" <?php if( isset($_POST['submit']) && $userGender === 'M' ) echo 'selected'?>>M</option>
-                </select><br />
+                <div class="form-group">
+                    <label class="control-label col-sm-4">Last Name</label>
+                    <div class="col-sm-8">
+                    <input class="form-control" type="text" name="lastName" value="
+                        <?php
+                            if ( !empty($userLastName) ) {
+                                echo $userLastName;
+                            }
+                        ?>"/>
+                    </div>
+                </div>
 
-                <label>Birthdate</label>
-                <input type="text" name="birthdate" value="
-                    <?php
-                if ( !empty($userBirthdate) ) {
-                    echo $userBirthdate;
-                }
-                ?>
-                "/><br />
+                <div class="form-group">
+                    <label class="control-label col-sm-4">Select Yor Gender</label>
+                    <div class="col-sm-8">
+                        <select class="form-control" name="gender">
+                            <option value="" <?php if( isset($_POST['submit']) && $userGender ==='' ) echo 'selected' ?>>-- Select --</option>
+                            <option value="F" <?php if( isset($_POST['submit']) && $userGender === 'F' ) echo 'selected' ?>>F</option>
+                            <option value="M" <?php if( isset($_POST['submit']) && $userGender === 'M' ) echo 'selected'?>>M</option>
+                        </select>
+                    </div>
+                </div>
 
-                <label>Weight</label>
-                <input type="text" name="weight" value="
-                    <?php
-                if ( !empty($userWeight) ) {
-                    echo $userWeight;
-                }
-                ?>
-                "/><br />
+                <div class="form-group">
+                    <label class="control-label col-sm-4">Birthdate</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" type="text" name="birthdate" value="
+                            <?php
+                        if ( !empty($userBirthdate) ) {
+                            echo $userBirthdate;
+                        }
+                        ?>"/>
+                    </div>
+                </div>
 
-                <label for="userName">Usrname</label>
-                <input type="text" id="userName" name="userName" value="<?php if ( !empty($userName) ) echo $userName; ?>" /><br />
+                <div class="form-group">
+                    <label class="control-label col-sm-4">Weight</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" type="text" name="weight" value="
+                            <?php
+                        if ( !empty($userWeight) ) {
+                            echo $userWeight;
+                        }
+                        ?>"/>
+                    </div>
+                </div>
 
-                <label for="password1">Password</label>
-                <input type="password" id="password1" name="password1" /><br />
+                <div class="form-group">
+                    <label class="control-label col-sm-4" for="userName">Usrname</label>
+                    <div class="col-sm-8">
+                    <input class="form-control" type="text" id="userName" name="userName" value="<?php if ( !empty($userName) ) echo $userName; ?>" /><br />
+                    </div>
+                </div>
 
-                <label for="password2">Password (retype:)</label>
-                <input type="password2" id="password2" name="password2" /><br />
-            </fieldset>
-            <input type="submit" name="submit" value="Sign Up"/>
+                <div class="form-group">
+                    <label class="control-label col-sm-4" for="password1">Password</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" type="password" id="password1" name="password1" /><br />
+                    </div>
+                </div>
 
+                <div class="form-group">
+                    <label class="control-label col-sm-4" for="password2">Password (retype:)</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" type="password2" id="password2" name="password2" /><br />
+                    </div>
+                </div>
+
+                <button class="btn btn-success" type="submit" name="submit">Sign Up</button>
+                <a href="logIn.php"><button class="btn btn-info" type="button" name="submit">Log In</button></a>
+            </form>
+        </div>
     </body>
 </html>
-
-
 
 
 

@@ -36,10 +36,9 @@ body {
     margin-left: auto;
     margin-right: auto;
     width: 50%;
-
 }
 
-h4 {
+h4, h2 {
     color: #005942;
     text-align: center;
 }
@@ -53,3 +52,4 @@ h3 {
     font-size: 1.4em !important;
     color: #920000;
 }
+

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>View Profile</title>
+    <?php require_once('bootstrapLinks.html')?>
 </head>
     <body>
     <?php
@@ -54,34 +55,45 @@
                          exit;
 
                      } else {
-                         echo 'User does not exist. Please sign up <a href="signup.php">Sing up</a>';
+                         echo '<p class="mainContainer">User does not exist. Please sign up <a href="signup.php">Sing up</a></p>';
                      }
 
                 } else {
 
-                    echo 'User does not exist. Please sign up <a href="signup.php">Sing up</a>';
+                    echo '<p class="mainContainer">User does not exist. Please sign up <a href="signup.php">Sing up</a></p>';
                 }
 
                 mysqli_close($dbs);
 
+            } else {
+                echo '<p class="mainContainer">Please enter your username and password.</p>';
             }
 
 
         }
-
-
-
     ?>
+        <div class="mainContainer">
+            <form class="form-horizontal" method="POST" action="<?php $_SERVER['PHP_SELF'] ?>">
 
-    <form method="POST" action="<?php $_SERVER['PHP_SELF'] ?>">
+                <div class="form-group">
+                    <label class="control-label col-sm-5" for="username">Username:</label>
+                    <div class="col-sm-7">
+                        <input class="control-label" type="text" name="username" /><br />
+                    </div>
+                </div>
 
-        <label for="username">Username:</label>
-        <input type="text" name="username" /><br />
-        <label for="password">Password:</label>
-        <input type="password" name="password" /><br />
-        <input type="submit" name="submit" value="Login" />
+                <div class="form-group">
+                    <label class="control-label col-sm-5" for="password">Password:</label>
+                    <div class="col-sm-7">
+                        <input class="control-label" type="password" name="password" /><br />
+                    </div>
+                </div>
 
-    </form>
+                <button class="btn btn-info" type="submit" name="submit">Log In</button>
+                <a href="signup.php"><button class="btn btn-success" type="button" name="submit">Sign Up</button></a>
+            </form>
+        </div>
+
     </body>
 </html>
 
