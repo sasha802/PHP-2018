@@ -58,8 +58,6 @@
             $userBirthdate = $_POST['birthdate'];
             $userWeight = mysqli_real_escape_string($dbs, $_POST['weight']);
 
-            $userBirthdateFormat = DateTime::createFromFormat('m/d/Y', $userBirthdate);
-            $birthdate = $userBirthdateFormat->format('Y/m/d');
 
             $imageName = $_FILES['image']['name'];
             $imageType = $_FILES['image']['type'];
@@ -67,12 +65,13 @@
             $imageError = $_FILES['image']['error'];
             $imageTmpLocation = $_FILES['image']['tmp_name'];
 
-            if ( !empty($userFirstName) && !empty($userLastName) && !empty($userGender) && !empty($userBirthdate) && !empty($userWeight) ) {
+
+            if ( !empty($userFirstName) && !empty($userLastName) && !empty($userGender) && !empty($userBirthdate) && !empty($userWeight) && is_numeric($userWeight) ) {
 
 
                 $sql = "UPDATE exercise_user 
                         SET first_name = '$userFirstName', last_name = '$userLastName', gender = '$userGender',
-                                    birthdate = '$birthdate', weight = '$userWeight'
+                                    birthdate = '$userBirthdate', weight = '$userWeight'
                         WHERE ID = '$userId'";
 
                 mysqli_query($dbs, $sql)
@@ -96,16 +95,16 @@
                             or die('Error inserting into ' . DB_NAME . ' database');
 
                         } else {
-                            echo '<p class="container">Error moving image file</p>';
+                            echo '<p class="mainContainer">Error moving image file</p>';
                         }
 
                     } else {
-                        echo '<p class="container">Error uploading an image.</p>';
+                        echo '<p class="mainContainer">Error uploading an image.</p>';
                     }
                 }
 
             } else {
-                echo '<p>Fill in the form</p>';
+                echo '<p class="mainContainer">Please fill in the form (weight has to be a number.)</p>';
             }
 
         }
@@ -117,7 +116,7 @@
         <form class="form-horizontal" enctype="multipart/form-data" method="POST" action="<?php echo $_SERVER['PHP_SELF']?>" >
 
             <div class="form-group">
-                <label class="ontrol-label">First Name</label>
+                <label class="ontrol-label">First Name:</label>
                 <input class="form-control" type="text" name="firstName" value="
                     <?php
 
@@ -131,7 +130,7 @@
             </div>
 
             <div class="form-group">
-                <label class="ontrol-label">Last Name</label>
+                <label class="ontrol-label">Last Name:</label>
                 <input class="form-control" type="text" name="lastName" value="
                     <?php
                         if ( isset($_POST['submit']) ) {
@@ -144,7 +143,7 @@
             </div>
 
             <div class="form-group">
-                <label class="ontrol-label">Select Yor Gender</label>
+                <label class="ontrol-label">Select Yor Gender:</label>
                 <select class="form-control" name="gender">
                     <option value="" <?php if( isset($_POST['submit']) && $userGender === '' ) echo 'selected' ?>>-- Select --</option>
                     <option value="F" <?php if( $sqlGender === 'F' ) echo 'selected' ?>>F</option>
@@ -153,7 +152,7 @@
             </div>
 
             <div class="form-group">
-                <label class="ontrol-label">Birthdate</label>
+                <label class="ontrol-label">Birthdate (YYYY-mm-dd):</label>
                 <input class="form-control datePicker" type="text" name="birthdate" value="
                     <?php
                         if ( isset($_POST['submit']) ) {
@@ -165,7 +164,7 @@
             </div>
 
             <div class="form-group">
-                <label class="ontrol-label">Weight</label>
+                <label class="ontrol-label">Weight:</label>
                 <input class="form-control" type="text" name="weight" value="
                     <?php
                         if ( isset($_POST['submit']) ) {

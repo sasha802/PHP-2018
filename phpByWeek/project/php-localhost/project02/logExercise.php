@@ -27,15 +27,14 @@
         if ( isset($_POST['submit']) ) {
 
             $exerciseType = mysqli_real_escape_string($dbs, $_POST['exerciseType']);
-            $exerciseDateInput = $_POST['exerciseDate'];
+            $exerciseDate = $_POST['exerciseDate'];
             $exerciseTime = mysqli_real_escape_string($dbs, trim($_POST['exerciseTime']));
             $heartRate = mysqli_real_escape_string($dbs, trim($_POST['heartRate']));
 
-            $exerciseDateFormat = DateTime::createFromFormat('m/d/Y', $exerciseDateInput);
-            $exerciseDate = $exerciseDateFormat->format('Y/m/d');
 
+           if ( !empty($exerciseType) && !empty($exerciseDate) && !empty($exerciseTime) && !empty($heartRate)
+               && is_numeric($exerciseTime) && is_numeric($heartRate)) {
 
-           if ( !empty($exerciseType) && !empty($exerciseDate) && !empty($exerciseTime) && !empty($heartRate) ) {
 
                 $query = "SELECT gender, weight, birthdate
                   FROM exercise_user
@@ -83,7 +82,7 @@
 
             } else {
 
-               echo '<p class="mainContainer">Please enter all the values.</p>';
+               echo '<p class="mainContainer">Please enter all the values (time and heart rate have to be numeric.)</p>';
            }
         }
 
@@ -95,7 +94,7 @@
         <form class="form-horizontal" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
 
             <div class="form-group">
-                <label class="ontrol-label">Type of exercise</label>
+                <label class="ontrol-label">Type of exercise:</label>
                 <select class="form-control" name="exerciseType">
                     <option value=""<?php if( isset($_POST['submit']) && $exerciseType === '' ) echo 'selected' ?>>-- Select --</option>
                     <option value="Ballroom Dance" <?php if( isset($_POST['submit']) && $exerciseType === 'Ballroom Dance' ) echo 'selected' ?>>Ballroom Dance</option>
@@ -106,8 +105,8 @@
             </div>
 
             <div class="form-group">
-                <label class="ontrol-label">Date of exercise</label>
-                <input class="form-control datePicker" type="text" name="exerciseDate" value="
+                <label class="ontrol-label">Date of exercise (YYYY-mm-dd):</label>
+                <input class="form-control" type="text" name="exerciseDate" value="
                     <?php
                         if ( !empty($exerciseDate) ) {
                             echo $exerciseDate;
@@ -117,7 +116,7 @@
             </div>
 
             <div class="form-group">
-                <label class="ontrol-label">Time (in minutes)</label>
+                <label class="ontrol-label">Time (in minutes):</label>
                 <input class="form-control" type="text" name="exerciseTime" value="
                     <?php
                         if ( !empty($exerciseTime) ) {
@@ -128,7 +127,7 @@
             </div>
 
             <div class="form-group">
-                <label class="ontrol-label">Average heart rate</label>
+                <label class="ontrol-label">Average heart rate:</label>
                 <input class="form-control" type="text" name="heartRate" value="
                     <?php
                         if ( !empty($heartRate) ) {
